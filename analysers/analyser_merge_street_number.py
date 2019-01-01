@@ -38,7 +38,7 @@ class _Analyser_Merge_Street_Number(Analyser_Merge):
 class Analyser_Merge_Street_Number_Toulouse(_Analyser_Merge_Street_Number):
     def __init__(self, config, logger = None):
         _Analyser_Merge_Street_Number.__init__(self, config, 1, "Toulouse", logger,
-            "http://data.grandtoulouse.fr/les-donnees/-/opendata/card/12673-n-de-rue",
+            u"http://data.grandtoulouse.fr/les-donnees/-/opendata/card/12673-n-de-rue",
             u"GrandToulouse-N° de rue",
             CSV(Source(attribution = "ToulouseMetropole", millesime = "2012-10-04",
                     file = "address_france_toulouse.csv.bz2"),
@@ -58,10 +58,10 @@ class Analyser_Merge_Street_Number_Toulouse(_Analyser_Merge_Street_Number):
 class Analyser_Merge_Street_Number_Nantes(_Analyser_Merge_Street_Number):
     def __init__(self, config, logger = None):
         _Analyser_Merge_Street_Number.__init__(self, config, 2, "Nantes", logger,
-            "http://data.nantes.fr/donnees/detail/adresses-postales-de-nantes-metropole/",
+            u"http://data.nantes.fr/donnees/detail/adresses-postales-de-nantes-metropole/",
             u"Adresses postales de Nantes Métropole",
             CSV(Source(attribution = u"Nantes Métropole %s", millesime = "08/2018",
-                    fileUrl = "https://data.nantesmetropole.fr/explore/dataset/244400404_adresses-postales-nantes-metropole/download/?format=csv"), separator = ";"),
+                    fileUrl = u"https://data.nantesmetropole.fr/explore/dataset/244400404_adresses-postales-nantes-metropole/download/?format=csv"), separator = ";"),
             Load("geo_point_2d", "geo_point_2d",
                 xFunction = lambda geo: float(geo.split(',')[1].strip()),
                 yFunction = lambda geo: float(geo.split(',')[0])),
@@ -75,10 +75,10 @@ class Analyser_Merge_Street_Number_Nantes(_Analyser_Merge_Street_Number):
 class Analyser_Merge_Street_Number_Bordeaux(_Analyser_Merge_Street_Number):
     def __init__(self, config, logger = None):
         _Analyser_Merge_Street_Number.__init__(self, config, 3, "Bordeaux", logger,
-            "http://data.bordeaux-metropole.fr/data.php?themes=8",
+            u"http://data.bordeaux-metropole.fr/data.php?themes=8",
             u"Numéro de voirie de Bordeaux Métropole",
             SHP(Source(attribution = u"Bordeaux Métropole", millesime = "08/2016",
-                    fileUrl = "http://data.bordeaux-metropole.fr/files.php?gid=20&format=2", zip = "FV_NUMVO_P.shp", encoding = "ISO-8859-15")),
+                    fileUrl = u"http://data.bordeaux-metropole.fr/files.php?gid=20&format=2", zip = "FV_NUMVO_P.shp", encoding = "ISO-8859-15")),
             Load(("ST_X(geom)",), ("ST_Y(geom)",), srid = 2154),
             Mapping(
                 generate = Generate(
@@ -90,10 +90,10 @@ class Analyser_Merge_Street_Number_Bordeaux(_Analyser_Merge_Street_Number):
 class Analyser_Merge_Street_Number_Lyon(_Analyser_Merge_Street_Number):
     def __init__(self, config, logger = None):
         _Analyser_Merge_Street_Number.__init__(self, config, 4, "Lyon", logger,
-            "https://data.grandlyon.com/localisation/points-dadressage-sur-bftiments-de-la-mftropole-de-lyon/",
+            u"https://data.grandlyon.com/localisation/points-dadressage-sur-bftiments-de-la-mftropole-de-lyon/",
             u"Grand Lyon - Points d'adressage sur bâtiments de la Métropole de Lyon",
             SHP(Source(attribution = u"Grand Lyon", millesime = "06/2016",
-                    fileUrl = "https://download.data.grandlyon.com/ws/grandlyon/adr_voie_lieu.adradresse.shp?srsname=epsg:4171",
+                    fileUrl = u"https://download.data.grandlyon.com/ws/grandlyon/adr_voie_lieu.adradresse.shp?srsname=epsg:4171",
                 zip = "adr_voie_lieu.adradresse.shp", encoding = "ISO-8859-15")),
             Load(("ST_X(geom)",), ("ST_Y(geom)",)),
             Mapping(
@@ -106,7 +106,7 @@ class Analyser_Merge_Street_Number_Lyon(_Analyser_Merge_Street_Number):
 class Analyser_Merge_Street_Number_Montpellier(_Analyser_Merge_Street_Number):
     def __init__(self, config, logger = None):
         _Analyser_Merge_Street_Number.__init__(self, config, 5, "Montpellier", logger,
-            "http://opendata.montpelliernumerique.fr/Point-adresse",
+            u"http://opendata.montpelliernumerique.fr/Point-adresse",
             u"Ville de Montpellier - Point adresse",
             # Convert shp with QGis, save as CSV with layer "GEOMETRY=AS_XY".
             CSV(Source(attribution = u"Ville de Montpellier", millesime = "05/2016",
@@ -138,10 +138,10 @@ class Analyser_Merge_Street_Number_Arles(_Analyser_Merge_Street_Number):
 class Analyser_Merge_Street_Number_Rennes(_Analyser_Merge_Street_Number):
     def __init__(self, config, logger = None):
         _Analyser_Merge_Street_Number.__init__(self, config, 7, "Rennes", logger,
-            "https://data.rennesmetropole.fr/explore/dataset/rva-bal/information/",
+            u"https://data.rennesmetropole.fr/explore/dataset/rva-bal/information/",
             u"Référentiel voies et adresses de Rennes Métropole",
             CSV(Source(attribution = u"Rennes Métropole", millesime = "03/2018",
-                    fileUrl = "https://data.rennesmetropole.fr/explore/dataset/rva-bal/download/?format=csv"),
+                    fileUrl = u"https://data.rennesmetropole.fr/explore/dataset/rva-bal/download/?format=csv"),
                 separator = ";"),
             Load("long", "lat",
                 where = lambda res: res["numero"] != "99999"),
