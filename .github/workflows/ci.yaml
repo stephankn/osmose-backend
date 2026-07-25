@@ -42,7 +42,7 @@ jobs:
         cd modules/osm_pbf_parser && make && cd ../../
 
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v7
       with:
         python-version: ${{ matrix.python-version }}
 
@@ -109,7 +109,7 @@ jobs:
         cd modules/osm_pbf_parser && make && cd ../../
 
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v7
       with:
         python-version: ${{ matrix.python-version }}
 
@@ -186,7 +186,7 @@ jobs:
         cd modules/osm_pbf_parser && make && cd ../../
 
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v7
       with:
         python-version: ${{ matrix.python-version }}
 
